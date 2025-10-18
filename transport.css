@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #45a049;
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+}
+
+.transport-selection {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.transport-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.option img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+}
+
+.option h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #45a049;
+}
+
+.option:hover {
+    transform: scale(1.1);
+    border-color: #004d99;
+}
+
+.option.selected {
+    border-color: #004d99;
+    background-color: #e6f2ff;
+}
+
+.date-people-selection {
+    margin: 1.5rem 0;
+}
+
+.date-people-selection label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.date-people-selection input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.people-selection {
+    display: flex;
+    gap: 1rem;
+}
+
+.people-selection input {
+    width: 50px;
+    text-align: center;
+}
+
+#viewTransportButton {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #45a049;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#viewTransportButton:hover {
+    background-color:#45a049;
+}

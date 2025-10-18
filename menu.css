@@ -1,0 +1,80 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom right, #d4f8c6, #2E7D32); /* Light mint green to deep emerald */
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: #1b3d1b;
+}
+
+/* Header */
+header {
+    background-color: #64c561;
+    
+    color: white;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Assistant List */
+.assistant-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Assistant Card */
+.assistant-option {
+    border: 2px solid #66bb6a; /* Soft green border */
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+    cursor: pointer;
+    background-color: #e8f5e9; /* Light green */
+    transition: background-color 0.3s, border-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #1b3d1b;
+}
+
+/* Hover Effect */
+.assistant-option:hover {
+    background-color: #c8e6c9; /* Softer green */
+    
+    border-color:#64c561 ; /* Deep green */
+}
+
+/* Selected Card */
+.assistant-option.selected {
+    background-color: #81c784; /* Fresh green */
+    border-color: #64c561; /* Dark green */
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+/* Book Button */
+.book-button {
+    background: linear-gradient(to right, #64c561, #66bb6a); /* Deep green to light green */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover Effect */
+.book-button:hover {
+    background: linear-gradient(to right, #64c561, #43a047); /* Darker green shades */
+    transform: scale(1.05);
+}
+
+/* Remove Focus Outline */
+.book-button:focus {
+    outline: none;
+}

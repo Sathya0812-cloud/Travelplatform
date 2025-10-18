@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Options</title>
+    <link rel="stylesheet" href="transport.css">
+</head>
+<body>
+    <header>
+        <h1>Plan Your Accessible Journey</h1>
+    </header>
+
+    <main>
+        <section class="transport-selection">
+            <h2>Select Your Preferred Transport Method</h2>
+
+            <div class="transport-options">
+                <div class="option" id="busOption" onclick="selectOption('bus')">
+                    <img src="bus.jpg" alt="Bus" />
+                    <h3>Bus</h3>
+                </div>
+                <div class="option" id="trainOption" onclick="selectOption('train')">
+                    <img src="train1.jpg" alt="Train" />
+                    <h3>Train</h3>
+                </div>
+                
+            
+            </div>
+
+            <div class="date-people-selection">
+                <label for="user_id">Your ID</label>
+                <input type="text" id="user_id" name="user_id" placeholder="Your ID" required>
+            
+                <label for="dateInput">Choose Travel Date:</label>
+                <input type="date" id="dateInput" required /><br><br>
+
+                <div class="location-selection">
+                    <label for="userLocation">Enter Your Location:</label>
+                    <select id="userLocation" required>
+                        <option value="" disabled selected>Select your starting location</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="madurai">Madurai</option>
+                        <option value="trichy">Trichy</option>
+                        <option value="coimbatore">Coimbatore</option>
+                        <option value="erode">Erode</option>
+                        <option value="salem">Salem</option>
+                        <option value="pondicherry">Pondicherry</option>
+                        <option value="tanjore">Tanjore</option>
+                        <option value="kanyakumari">Kanyakumari</option>
+                        <!-- Add more locations as needed -->
+                    </select>
+                </div><br><br>
+
+                <div class="people-selection">
+                    <label for="children">Children:</label>
+                    <input type="number" id="children" min="0" value="0" />
+                    <label for="adults">Adults:</label>
+                    <input type="number" id="adults" min="1" value="1" />
+                </div>
+            </div>
+
+            <button id="viewTransportButton">View Available Options</button>
+        </section>
+    </main>
+
+    <script src="transport.js"></script>
+</body>
+</html>

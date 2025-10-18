@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Travel Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #8BC34A, #2E7D32);
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .option-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+       </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Accessible Travel Help</h2>
+        <label for="place">Select a Place:</label>
+        <select id="place" onchange="showOptions()">
+            <option value="">-- Choose a Place --</option>
+            <option value="taj_mahal">Taj Mahal</option>
+            <option value="red_fort">Red Fort</option>
+            <option value="qutub_minar">Qutub Minar</option>
+            <option value="lalbagh_botanical_garden">Lalbagh Botanical Garden, Bangalore</option>
+<option value="gateway_of_india">Gateway of India</option>
+<option value="victoria_memorial">Victoria Memorial, Kolkata</option>
+<option value="alleppey_backwaters">Alleppey Backwaters, Kerala</option>
+<option value="city_palace_udaipur">City Palace, Udaipur</option>
+<option value="jaisalmer_fort">Jaisalmer Fort, Jaisalmer</option>
+<option value="hawa_mahal">Hawa Mahal, Jaipur</option>
+<option value="charminar">Charminar, Hyderabad</option>
+<option value="rishikesh">Rishikesh, Uttarakhand</option>
+<option value="vivekananda_rock">Vivekananda Rock, Kanyakumari</option>
+<option value="meenakshi_temple">Meenakshi Temple, Madurai</option>
+<option value="shimla">Shimla, Himachal Pradesh</option>
+<option value="kaziranga_national_park">Kaziranga National Park, Assam</option>
+<option value="mahabalipuram">Mahabalipuram, Tamil Nadu</option>
+<option value="diu_fort">Diu Fort, Diu</option>
+<option value="miramar_beach_goa">Miramar Beach, Goa</option>
+        </select>
+        
+        <div id="options" style="display: none;">
+            <h3>What do you need?</h3>
+            <button onclick="showData('helpers')">Need a Helper</button>
+            <button onclick="showData('medical')">Need a Nearest Medical Shop</button>
+            <button onclick="showData('restaurants')">Need an Accessible Restaurant</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const data = {
+            taj_mahal: {
+        helpers: [
+            { name: "Ravi Kumar", contact: "9876543210" },
+            { name: "Amit Sharma", contact: "8765432109" }
+        ],
+        medical: [
+            { name: "Agra Medical Store", link: "https://maps.google.com/?q=Agra+Medical+Store" },
+            { name: "Janta Chemist", link: "https://maps.google.com/?q=Janta+Chemist+Agra" }
+        ],
+        restaurants: [
+            { name: "Dasaprakash", access: "Wheelchair, Braille Menu", price: "₹500-₹2000", link: "https://maps.google.com/?q=Dasaprakash+Agra" },
+            { name: "Pinch of Spice", access: "Wheelchair, Sign Language Support", price: "₹1000-₹3000", link: "https://maps.google.com/?q=Pinch+of+Spice+Agra" }
+        ]
+    },
+    red_fort: {
+        helpers: [
+            { name: "Rahul Singh", contact: "7896541230" },
+            { name: "Sanjay Verma", contact: "6543217890" }
+        ],
+        medical: [
+            { name: "Red Fort Pharmacy", link: "https://maps.google.com/?q=Red+Fort+Pharmacy+Delhi" },
+            { name: "Lifecare Medicals", link: "https://maps.google.com/?q=Lifecare+Medicals+Delhi" }
+        ],
+        restaurants: [
+            { name: "Heritage Bites", access: "Wheelchair, Accessible Washroom", price: "₹800-₹2500", link: "https://maps.google.com/?q=Heritage+Bites+Delhi" },
+            { name: "Fort View Cafe", access: "Braille Menu, Sign Support", price: "₹600-₹2000", link: "https://maps.google.com/?q=Fort+View+Cafe+Delhi" }
+        ]
+    },
+    qutub_minar: {
+        helpers: [
+            { name: "Arun Patel", contact: "9123456780" },
+            { name: "Deepak Yadav", contact: "7890123456" }
+        ],
+        medical: [
+            { name: "Qutub Medical Centre", link: "https://maps.google.com/?q=Qutub+Medical+Centre" },
+            { name: "Health First Pharmacy", link: "https://maps.google.com/?q=Health+First+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Minar Bites", access: "Wheelchair Access, Braille Menu", price: "₹700-₹2000", link: "https://maps.google.com/?q=Minar+Bites" },
+            { name: "Spice Hub", access: "Sign Language Support", price: "₹900-₹2500", link: "https://maps.google.com/?q=Spice+Hub" }
+        ]
+    },
+    lalbagh_botanical_garden: {
+        helpers: [
+            { name: "Vikas Rao", contact: "9876545678" },
+            { name: "Manoj Shetty", contact: "8765432187" }
+        ],
+        medical: [
+            { name: "Lalbagh Pharmacy", link: "https://maps.google.com/?q=Lalbagh+Pharmacy" },
+            { name: "Nature's Cure Chemist", link: "https://maps.google.com/?q=Nature's+Cure+Chemist" }
+        ],
+        restaurants: [
+            { name: "Green Haven", access: "Wheelchair Access", price: "₹500-₹1800", link: "https://maps.google.com/?q=Green+Haven" },
+            { name: "Botanic Bites", access: "Accessible Washroom", price: "₹800-₹2200", link: "https://maps.google.com/?q=Botanic+Bites" }
+        ]
+    },
+    gateway_of_india: {
+        helpers: [
+            { name: "Rohan Desai", contact: "9654321876" },
+            { name: "Ajay Mehta", contact: "8543217896" }
+        ],
+        medical: [
+            { name: "Mumbai Medicals", link: "https://maps.google.com/?q=Mumbai+Medicals" },
+            { name: "Coastal Health Centre", link: "https://maps.google.com/?q=Coastal+Health+Centre" }
+        ],
+        restaurants: [
+            { name: "Harbour View", access: "Wheelchair, Braille Menu", price: "₹1000-₹3500", link: "https://maps.google.com/?q=Harbour+View" },
+            { name: "Seaside Delights", access: "Sign Language Support", price: "₹1200-₹4000", link: "https://maps.google.com/?q=Seaside+Delights" }
+        ]
+    },
+    victoria_memorial: {
+        helpers: [
+            { name: "Kunal Bose", contact: "9456123789" },
+            { name: "Anil Roy", contact: "8745632198" }
+        ],
+        medical: [
+            { name: "Royal Care Pharmacy", link: "https://maps.google.com/?q=Royal+Care+Pharmacy" },
+            { name: "Heritage Health Hub", link: "https://maps.google.com/?q=Heritage+Health+Hub" }
+        ],
+        restaurants: [
+            { name: "Regal Dining", access: "Wheelchair Access", price: "₹900-₹3000", link: "https://maps.google.com/?q=Regal+Dining" },
+            { name: "Palace Bites", access: "Sign Language Menu", price: "₹1100-₹3500", link: "https://maps.google.com/?q=Palace+Bites" }
+        ]
+    },
+    alleppey_backwaters: {
+        helpers: [
+            { name: "Suresh Nair", contact: "9988776655" },
+            { name: "Vijay Menon", contact: "8877665544" }
+        ],
+        medical: [
+            { name: "Alleppey Medical Centre", link: "https://maps.google.com/?q=Alleppey+Medical+Centre" },
+            { name: "Backwater Pharmacy", link: "https://maps.google.com/?q=Backwater+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Kerala Spice", access: "Wheelchair, Accessible Washroom", price: "₹500-₹1500", link: "https://maps.google.com/?q=Kerala+Spice+Alleppey" },
+            { name: "Houseboat Dine", access: "Braille Menu", price: "₹800-₹2500", link: "https://maps.google.com/?q=Houseboat+Dine" }
+        ]
+    },
+    city_palace_udaipur: {
+        helpers: [
+            { name: "Ramesh Singh", contact: "8899776655" },
+            { name: "Anand Verma", contact: "7799665544" }
+        ],
+        medical: [
+            { name: "Palace Health Clinic", link: "https://maps.google.com/?q=Palace+Health+Clinic" },
+            { name: "Royal Pharmacy", link: "https://maps.google.com/?q=Royal+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Rajwadi Thali", access: "Wheelchair, Sign Language Support", price: "₹700-₹2000", link: "https://maps.google.com/?q=Rajwadi+Thali" },
+            { name: "Heritage Cafe", access: "Accessible Washroom", price: "₹900-₹2500", link: "https://maps.google.com/?q=Heritage+Cafe" }
+        ]
+    },
+    jaisalmer_fort: {
+        helpers: [
+            { name: "Lakhan Singh", contact: "7766554433" },
+            { name: "Bhavani Rathore", contact: "6655443322" }
+        ],
+        medical: [
+            { name: "Desert Health Centre", link: "https://maps.google.com/?q=Desert+Health+Centre" },
+            { name: "Fort Pharmacy", link: "https://maps.google.com/?q=Fort+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Desert Dhaba", access: "Wheelchair, Sign Language Support", price: "₹600-₹1800", link: "https://maps.google.com/?q=Desert+Dhaba" },
+            { name: "Golden View Cafe", access: "Braille Menu", price: "₹1000-₹3000", link: "https://maps.google.com/?q=Golden+View+Cafe" }
+        ]
+    },
+    hawa_mahal: {
+        helpers: [
+            { name: "Prakash Sharma", contact: "6677889900" },
+            { name: "Raj Malhotra", contact: "5566778899" }
+        ],
+        medical: [
+            { name: "Pink City Medicals", link: "https://maps.google.com/?q=Pink+City+Medicals" },
+            { name: "Hawa Mahal Pharmacy", link: "https://maps.google.com/?q=Hawa+Mahal+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Royal Haveli", access: "Wheelchair, Accessible Washroom", price: "₹700-₹2200", link: "https://maps.google.com/?q=Royal+Haveli" },
+            { name: "Mahal Delights", access: "Sign Language Support", price: "₹1000-₹3200", link: "https://maps.google.com/?q=Mahal+Delights" }
+        ]
+    },
+    charminar: {
+        helpers: [
+            { name: "Imran Qureshi", contact: "7788992211" },
+            { name: "Sameer Khan", contact: "6677889922" }
+        ],
+        medical: [
+            { name: "Charminar Health Point", link: "https://maps.google.com/?q=Charminar+Health+Point" },
+            { name: "Deccan Pharmacy", link: "https://maps.google.com/?q=Deccan+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Hyderabadi Biryani House", access: "Wheelchair, Braille Menu", price: "₹500-₹2000", link: "https://maps.google.com/?q=Hyderabadi+Biryani+House" },
+            { name: "Nawab's Delight", access: "Sign Language Support", price: "₹800-₹2500", link: "https://maps.google.com/?q=Nawab's+Delight" }
+        ]
+    },
+    rishikesh: {
+        helpers: [
+            { name: "Arvind Joshi", contact: "9988554433" },
+            { name: "Sohan Pandey", contact: "8877665522" }
+        ],
+        medical: [
+            { name: "Rishikesh Medical Hub", link: "https://maps.google.com/?q=Rishikesh+Medical+Hub" },
+            { name: "Ganges Pharmacy", link: "https://maps.google.com/?q=Ganges+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Ganga View Cafe", access: "Wheelchair, Accessible Washroom", price: "₹500-₹1800", link: "https://maps.google.com/?q=Ganga+View+Cafe" },
+            { name: "Organic Bites", access: "Sign Language Support", price: "₹800-₹2200", link: "https://maps.google.com/?q=Organic+Bites" }
+        ]
+    },
+    vivekananda_rock: {
+        helpers: [
+            { name: "Ravi Pillai", contact: "7755443322" },
+            { name: "Hari Krishnan", contact: "6644332211" }
+        ],
+        medical: [
+            { name: "Rock Medicals", link: "https://maps.google.com/?q=Rock+Medicals" },
+            { name: "Vivekananda Pharmacy", link: "https://maps.google.com/?q=Vivekananda+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Ocean Breeze", access: "Wheelchair, Braille Menu", price: "₹800-₹2500", link: "https://maps.google.com/?q=Ocean+Breeze" },
+            { name: "Rockside Delights", access: "Sign Language Support", price: "₹1000-₹3000", link: "https://maps.google.com/?q=Rockside+Delights" }
+        ]
+    },
+    meenakshi_temple: {
+        helpers: [
+            { name: "Sathish Kumar", contact: "8877665544" },
+            { name: "Mohan Raj", contact: "7766554433" }
+        ],
+        medical: [
+            { name: "Madurai Medicals", link: "https://maps.google.com/?q=Madurai+Medicals" },
+            { name: "Temple Pharmacy", link: "https://maps.google.com/?q=Temple+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Madurai Thali", access: "Wheelchair, Braille Menu", price: "₹500-₹1800", link: "https://maps.google.com/?q=Madurai+Thali" },
+            { name: "Temple View Restaurant", access: "Accessible Washroom", price: "₹800-₹2500", link: "https://maps.google.com/?q=Temple+View+Restaurant" }
+        ]
+    },
+    shimla: {
+        helpers: [
+            { name: "Rohan Sharma", contact: "9988776655" },
+            { name: "Manoj Thakur", contact: "8877665544" }
+        ],
+        medical: [
+            { name: "Shimla Health Clinic", link: "https://maps.google.com/?q=Shimla+Health+Clinic" },
+            { name: "Himalayan Pharmacy", link: "https://maps.google.com/?q=Himalayan+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Cafe Simla Times", access: "Wheelchair, Accessible Washroom", price: "₹600-₹2000", link: "https://maps.google.com/?q=Cafe+Simla+Times" },
+            { name: "Wake & Bake", access: "Braille Menu", price: "₹800-₹2500", link: "https://maps.google.com/?q=Wake+&+Bake+Shimla" }
+        ]
+    },
+    kaziranga_national_park: {
+        helpers: [
+            { name: "Rahul Bora", contact: "7799665544" },
+            { name: "Debashish Gogoi", contact: "6688554433" }
+        ],
+        medical: [
+            { name: "Kaziranga Medical Centre", link: "https://maps.google.com/?q=Kaziranga+Medical+Centre" },
+            { name: "Jungle Pharmacy", link: "https://maps.google.com/?q=Jungle+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Wild Grass Lodge", access: "Wheelchair, Braille Menu", price: "₹700-₹2000", link: "https://maps.google.com/?q=Wild+Grass+Lodge+Kaziranga" },
+            { name: "Jungle Flavor", access: "Sign Language Support", price: "₹900-₹2500", link: "https://maps.google.com/?q=Jungle+Flavor+Kaziranga" }
+        ]
+    },
+    mahabalipuram: {
+        helpers: [
+            { name: "Vikram Reddy", contact: "7766554433" },
+            { name: "Gopi Chandran", contact: "6655443322" }
+        ],
+        medical: [
+            { name: "Mahabalipuram Health Centre", link: "https://maps.google.com/?q=Mahabalipuram+Health+Centre" },
+            { name: "Shore Temple Pharmacy", link: "https://maps.google.com/?q=Shore+Temple+Pharmacy" }
+        ],
+        restaurants: [
+            { name: "Moonrakers", access: "Wheelchair, Braille Menu", price: "₹500-₹1800", link: "https://maps.google.com/?q=Moonrakers+Mahabalipuram" },
+            { name: "Le Yogi", access: "Accessible Washroom", price: "₹800-₹2200", link: "https://maps.google.com/?q=Le+Yogi+Mahabalipuram" }
+        ]
+    },
+    diu_fort: {
+        helpers: [
+            { name: "Ramesh Patel", contact: "7755443322" },
+            { name: "Amit Doshi", contact: "6644332211" }
+        ],
+        medical: [
+            { name: "Diu Healthcare", link: "https://maps.google.com/?q=Diu+Healthcare" },
+            { name: "Fort Pharmacy", link: "https://maps.google.com/?q=Fort+Pharmacy+Diu" }
+        ],
+        restaurants: [
+            { name: "O'Coqueiro", access: "Wheelchair, Accessible Washroom", price: "₹700-₹2200", link: "https://maps.google.com/?q=O'Coqueiro+Diu" },
+            { name: "Apana Foodland", access: "Sign Language Support", price: "₹900-₹2500", link: "https://maps.google.com/?q=Apana+Foodland+Diu" }
+        ]
+    }
+        };
+       
+        function showOptions() {
+            document.getElementById('options').style.display = 'block';
+        }
+
+        function showData(type) {
+            let place = document.getElementById("place").value;
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            if (place && data[place] && data[place][type]) {
+                let items = data[place][type];
+                let html = `<h3>${type.charAt(0).toUpperCase() + type.slice(1)} Details:</h3><ul>`;
+                
+                items.forEach(item => {
+                    if (type === "medical" || type === "restaurants") {
+                        html += `<li><a href="${item.link}" target="_blank">${item.name}</a></li>`;
+                    } else {
+                        html += `<li>${item.name} - Contact: ${item.contact}</li>`;
+                    }
+                });
+                
+                html += "</ul>";
+                resultDiv.innerHTML = html;
+            } else {
+                resultDiv.innerHTML = "<p>No data available.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
+

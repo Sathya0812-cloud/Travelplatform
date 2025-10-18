@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Transport Options</title>
+    <link rel="stylesheet" href="view-options.css">
+</head>
+<body>
+    <header>
+        <h1>Available Transport Options</h1>
+    </header>
+
+    <main>
+        <h2 id="selectedPlace"></h2>
+        <div id="options-container"></div>
+        <button id="submitButton">Submit</button>
+    </main>
+
+    <script src="view-option.js"></script>
+</body>
+</html>
+
+
+<script>
+    document.querySelectorAll(".transport-option").forEach(option => {
+        option.addEventListener("click", () => {
+            document.querySelectorAll(".transport-option").forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+        });
+    });
+    </script>
+    

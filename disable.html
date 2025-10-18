@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4caf50, #8be48f);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #ffffff;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .input-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        select {
+            background: #f9f9f9;
+        }
+        button {
+            background: #45a049;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #4e98a1;
+        }
+        input::placeholder {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Accessible Travel Platform</h1>
+    <div class="input-box">
+        <form method="POST" action="disable.php">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" placeholder="Enter your ID" required>
+           
+            <label for="disability">Select your capability with disabilities:</label>
+            <select id="disability" name="disability" required>
+                <option value="Physical">Physical Disability</option>
+                <option value="Visual">Visual Impairment</option>
+                <option value="Hearing">Hearing Impairment</option>
+                <option value="Cognitive">Cognitive Disability</option>
+                <option value="Speech">Speech Impairment</option>
+                <option value="Autism">Autism Spectrum</option>
+                <option value="Elderly">Elderly Accessibility Needs</option>
+                <option value="Other">Other Disabilities</option>
+            </select>
+
+            <label for="location">Enter Your Current Location:</label>
+            <input type="text" id="location" name="location" placeholder="City, State, or Landmark" required>
+            
+            <!-- Change button type -->
+            <button onclick="location.href='details.html';">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

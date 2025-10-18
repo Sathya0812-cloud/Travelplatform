@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Services</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <header>
+        <h1>        Available Assistants</h1>
+    </header>
+
+    <main>
+        <!-- Notification Area -->
+        <div id="notification" class="notification"></div>
+
+        <!-- Assistant List -->
+        <section id="assistant-list" class="assistant-list"></section>
+
+        <!-- Booking Form -->
+        <div id="assistant-selection" class="assistant-selection">
+            <form method="POST" action="menu.php">
+                <label for="user_id">Your ID</label>
+                <input type="text" id="user_id" name="user_id" placeholder="Your ID" required>
+            
+                <input type="hidden" id="assistant_name" name="assistant_name"> <!-- Hidden input to store assistant name -->
+            
+                <button type="submit" id="bookButton" class="book-button">Book Now</button>
+            </form>
+            
+        </div>
+    </main>
+
+    <script src="menu.js"></script>
+</body>
+</html>

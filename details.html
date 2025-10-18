@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Accessible Destinations</title>
+    <link rel="stylesheet" href="details.css">
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #a3df88;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: rgb(5, 5, 5);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .logout {
+            margin-left: auto;
+            font-size: 1rem;
+            text-decoration: none;
+            background-color: #f44336;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background-color: #d32f2f;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #5fb66a;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            .menu.show {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+ <body>
+        <header>
+            <nav>
+                <div class="menu">
+                    <a href="menu.html?option=assistant">Assistant</a>
+                    <a href="bookinginfo.html">Booking Info</a>
+                    <a href="traveltools.html">Travel Tools</a>
+                    <a href="helper.html">Emergency</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    
+                    
+                </div>
+                <a href="login.html" class="logout">Logout</a>
+            </nav>
+        <h1>Explore Accessible Destinations</h1>
+    </header>
+
+    <main>
+       
+
+        <section id="explore-container">
+            <!-- Destination cards dynamically rendered -->
+        </section>
+
+        <!-- Details Modal -->
+        <div id="detailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <h2 id="modal-title"></h2>
+                <img id="modal-img" src="" alt="Destination Image">
+                <p id="modal-desc"></p>
+                <ul id="modal-info"></ul>
+                <div class="modal-buttons">
+                    <button onclick="location.href='transport.html';">Book Tickets</button>
+                    <button onclick="location.href='roombooking.html';">Book Rooms</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="details.js"></script>
+</body>
+</html>
+
+

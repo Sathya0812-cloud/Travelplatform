@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Selection</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom right, #a8c0ff, purple);
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: white;
+}
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .tool {
+            border: 2px solid #ddd;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tool img {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+        }
+        .selected {
+            border: 3px solid lightgreen;
+            background-color: grey;
+        }
+        .input-section {
+            margin-top: 20px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: lightseagreen;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select a Tool for Your Journey</h1>
+
+    <div class="container">
+        <div class="tool" onclick="selectTool(this, 'Wheelchair', 100)">
+            <img src="wheelchair1.jpg" alt="Wheelchair">
+            <p>Wheelchair</p>
+            <p>Price: ₹100/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Walking Stick', 50)">
+            <img src="walkingstick.jpg" alt="Walking Stick">
+            <p>Walking Stick</p>
+            <p>Price: ₹50/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Hearing Aid', 200)">
+            <img src="hearingkid.jpg" alt="Hearing Aid">
+            <p>Hearing Aid</p>
+            <p>Price: ₹200/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Crutches', 150)">
+            <img src="crutches.jpg" alt="Crutches">
+            <p>Crutches</p>
+            <p>Price: ₹150/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Prosthetic Leg', 500)">
+            <img src="prosthetic.jpg" alt="Prosthetic Leg">
+            <p>Prosthetic Leg</p>
+            <p>Price: ₹500/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Guide Cane', 60)">
+            <img src="guidecane.jpg" alt="Guide Cane">
+            <p>Guide Cane</p>
+            <p>Price: ₹60/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Braille Notepad', 100)">
+            <img src="brailenotepad.jpg" alt="Braille Notepad">
+            <p>Braille Notepad</p>
+            <p>Price: ₹100/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Portable Oxygen Tank', 300)">
+            <img src="oxygentank.jpg" alt="Oxygen Tank">
+            <p>Portable Oxygen Tank</p>
+            <p>Price: ₹300/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Mobility Scooter', 700)">
+            <img src="mobilityscooter.jpg" alt="Mobility Scooter">
+            <p>Mobility Scooter</p>
+            <p>Price: ₹700/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Knee Brace', 80)">
+            <img src="kneebrace.jpg" alt="Knee Brace">
+            <p>Knee Brace</p>
+            <p>Price: ₹80/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Elbow Support', 60)">
+            <img src="elbowsupport.jpg" alt="Elbow Support">
+            <p>Elbow Support</p>
+            <p>Price: ₹60/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Neck Collar', 90)">
+            <img src="neckcollar.jpg" alt="Neck Collar">
+            <p>Neck Collar</p>
+            <p>Price: ₹90/day</p>
+        </div>
+        <div class="tool" onclick="selectTool(this, 'Orthopedic Shoes', 120)">
+            <img src="shoe.jpg" alt="Orthopedic Shoes">
+            <p>Orthopedic Shoes</p>
+            <p>Price: ₹120/day</p>
+        </div>
+    </div>
+
+    <div class="input-section">
+        <label for="user_id">Enter Your ID:</label>
+        <input type="text" id="user_id" placeholder="User ID" required>
+        <button class="submit-btn" onclick="submitSelection()">Submit</button>
+    </div>
+
+    <script>
+        let selectedTool = null;
+        let selectedToolName = "";
+        let selectedToolPrice = 0;
+
+        function selectTool(element, toolName, price) {
+            if (selectedTool) {
+                selectedTool.classList.remove("selected");
+            }
+            selectedTool = element;
+            selectedToolName = toolName;
+            selectedToolPrice = price;
+            element.classList.add("selected");
+        }
+
+        function submitSelection() {
+            let userId = document.getElementById("user_id").value;
+            if (!selectedToolName) {
+                alert("Please select a tool before submitting.");
+                return;
+            }
+            if (!userId) {
+                alert("Please enter your User ID.");
+                return;
+            }
+
+            let form = document.createElement("form");
+            form.method = "POST";
+            form.action = "traveltools.php";
+
+            let toolInput = document.createElement("input");
+            toolInput.type = "hidden";
+            toolInput.name = "tool_name";
+            toolInput.value = selectedToolName;
+
+            let priceInput = document.createElement("input");
+            priceInput.type = "hidden";
+            priceInput.name = "price";
+            priceInput.value = selectedToolPrice;
+
+            let userIdInput = document.createElement("input");
+            userIdInput.type = "hidden";
+            userIdInput.name = "user_id";
+            userIdInput.value = userId;
+
+            form.appendChild(toolInput);
+            form.appendChild(priceInput);
+            form.appendChild(userIdInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+
+</body>
+</html>

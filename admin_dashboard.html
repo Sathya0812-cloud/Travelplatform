@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; }
+        .sidebar { width: 250px; background-color: #333; color: white; padding: 20px; height: 100vh; }
+        .sidebar h2 { text-align: center; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li { padding: 10px; cursor: pointer; border-bottom: 1px solid #555; }
+        .sidebar ul li:hover { background-color: #555; }
+        .content { flex: 1; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table, th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        button { background: red; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li onclick="loadData('users')">User Login Details</li>
+            <li onclick="loadData('travel')">Travel Bookings</li>
+            <li onclick="loadData('rooms')">Room Bookings</li>
+            <li onclick="loadData('tools')">Tool Bookings</li>
+        </ul>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <div class="content">
+        <h2>Dashboard</h2>
+        <div id="table-container">Select a category from the sidebar.</div>
+    </div>
+
+    <script>
+        function loadData(type) {
+            fetch(`admin_fetch.php?type=${type}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("table-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+
+        function logout() {
+            fetch("admin_logout.php")
+                .then(() => window.location.href = "admin_login.html");
+        }
+    </script>
+</body>
+</html>
